@@ -35,7 +35,7 @@ void read_from_file(List &list, const char *file_name) {
     file.close();
 }
 
-void read_from_keyboard(List& list) {
+void read_from_keyboard(List &list, int need_maintain_order) {
     int choice;
     do {
         std::cout << "Enter [1] to add a book, [0] to exit: ";
@@ -67,8 +67,10 @@ void read_from_keyboard(List& list) {
         std::cout << "Enter type: ";
         std::getline(std::cin, type);
 
-        Book* newBook = create_book(book_id, title, author, publisher, publication_year, type);
-        insert_at_tail(list, newBook);
+        Book* new_book = create_book(book_id, title, author, publisher, publication_year, type);
+        
+        if (need_maintain_order) insert_maintain_order(list, new_book);
+        else insert_at_tail(list, new_book);
 
         std::cout << "Book added successfully!\n";
 

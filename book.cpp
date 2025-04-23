@@ -20,34 +20,34 @@ bool is_list_empty(List &list, Book *book) {
 }
 
 Book* create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type) {
-    Book *newBook = new Book;
+    Book *new_book = new Book;
 
-    newBook->book_id = book_id;
-    newBook->title = title;
-    newBook->author = author;
-    newBook->publisher = publisher;
-    newBook->publication_year = publication_year;
-    newBook->type = type;
+    new_book->book_id = book_id;
+    new_book->title = title;
+    new_book->author = author;
+    new_book->publisher = publisher;
+    new_book->publication_year = publication_year;
+    new_book->type = type;
 
-    return newBook;
+    return new_book;
 }
 
-void insert_at_head(List &list, Book *book) {
-    if (is_list_empty(list, book)) return;
+void insert_at_head(List &list, Book *new_book) {
+    if (is_list_empty(list, new_book)) return;
 
-    list.head->prev = book;
-    book->next = list.head;
-    book->prev = nullptr;
-    list.head = book;
+    list.head->prev = new_book;
+    new_book->next = list.head;
+    new_book->prev = nullptr;
+    list.head = new_book;
 }
 
-void insert_at_tail(List &list, Book *book) {
-    if (is_list_empty(list, book)) return;
+void insert_at_tail(List &list, Book *new_book) {
+    if (is_list_empty(list, new_book)) return;
 
-    book->prev = list.tail;
-    book->next = nullptr;
-    list.tail->next = book;
-    list.tail = book;
+    new_book->prev = list.tail;
+    new_book->next = nullptr;
+    list.tail->next = new_book;
+    list.tail = new_book;
 }
 
 void insert_at_after(List &list, Book *book_before, Book *insert_book) {
@@ -66,6 +66,23 @@ void insert_at_after(List &list, Book *book_before, Book *insert_book) {
 
 void insert_at_middle() {
 
+}
+
+void insert_maintain_order(List &list, Book *new_book) {
+    Book *cur = list.head;
+
+    while (cur && ((new_book->type > cur->type || new_book->type == cur->type) && new_book->book_id > cur->book_id)) {
+        cur = cur->next;
+    }
+
+    if (!cur) {
+        insert_at_tail(list, new_book);
+    }
+    else if (cur == list.head) {
+        insert_at_head(list, new_book);
+    } else {
+        insert_at_after(list, cur->prev, new_book);
+    }
 }
 
 void print_books(Book *head) {

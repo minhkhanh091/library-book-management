@@ -1,5 +1,4 @@
 /*
-* 
 Github Repo: https://github.com/minhkhanh091/project-010110194315
 
 Date Created: 22/4/2024
@@ -13,13 +12,10 @@ Finished on:
 #include "utils.h"
 #include "file_io.h"
 
-void read_input(int choice, List &list) {
-	if (choice) {
-		read_from_file(list, "books.txt");
-	}
-	else {
-		read_from_keyboard(list);
-	}
+void read_input(int choice, int need_maintain_order, List &list) {
+	if (need_maintain_order) read_from_keyboard(list, need_maintain_order);
+	else if (choice) read_from_file(list, "books.txt");
+	else read_from_keyboard(list, need_maintain_order);
 }
 
 int main() {
@@ -39,8 +35,7 @@ int main() {
 		}
 	} while (choice <= 0 || choice > 2);
 
-	read_input(choice, list);
-	print_books(list.head);
+	read_input(choice, 0, list);
 
 	do {
 		print_menu_2();
@@ -68,5 +63,22 @@ int main() {
 		{
 
 		}
+
+		case 3:
+		{
+			sort_books_by_type_and_id(list);
+			print_books(list.head);
+
+			break;
+		}
+
+		case 4:
+		{
+			sort_books_by_type_and_id(list);
+			read_input(0, 1, list);
+			print_books(list.head);
+			
+			break;
+		}		
 	}
 }
