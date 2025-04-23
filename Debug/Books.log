@@ -1,0 +1,3 @@
+﻿  library_main.cpp
+C:\Users\Admin\source\repos\Books\Books\book.h(18,2): warning C4091: 'typedef ': ignored on left of 'List' when no variable is declared
+  Books.vcxproj -> C:\Users\Admin\source\repos\Books\Debug\Books.exe

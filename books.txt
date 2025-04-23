@@ -1,0 +1,20 @@
+1|Lap trinh C|Nguyen Van A|NXB Tre|2001|Lap trinh
+2|Cau truc du lieu|Nguyen Van B|NXB Giao duc|2005|Khoa hoc may tinh
+3|Thuat toan C|Nguyen Van C|NXB Tre|2010|Lap trinh
+4|Co so du lieu|Nguyen Van D|NXB Giao duc|2008|Co so du lieu
+5|Ky thuat lap trinh|Nguyen Van E|NXB Lao Dong|2012|Lap trinh
+6|Mang may tinh|Nguyen Van F|NXB Khoa hoc|2009|Mang
+7|He dieu hanh|Nguyen Van G|NXB Giao duc|2011|He dieu hanh
+8|An toan thong tin|Nguyen Van H|NXB Quan doi|2015|Bao mat
+9|Lap trinh Python|Nguyen Van I|NXB Tre|2020|Lap trinh
+10|Machine Learning|Nguyen Van K|NXB Tri thuc|2018|Tri tue nhan tao
+11|Deep Learning|Nguyen Van L|NXB Tre|2019|AI
+12|Tri tue nhan tao|Nguyen Van M|NXB Giao duc|2017|AI
+13|Giai tich 1|Nguyen Van N|NXB DHQG|2003|Toan hoc
+14|Lap trinh Java|Nguyen Van O|NXB Giao duc|2016|Lap trinh
+15|JavaScript nang cao|Nguyen Van P|NXB Tre|2022|Lap trinh
+16|Phat trien Web|Nguyen Van Q|NXB CNTT|2021|Web
+17|Lap trinh Android|Nguyen Van R|NXB Mobile|2018|Di dong
+18|Lap trinh iOS|Nguyen Van S|NXB Apple|2020|Di dong
+19|Docker co ban|Nguyen Van T|NXB DevOps|2021|He thong
+20|Kubernetes nang cao|Nguyen Van U|NXB Cloud|2022|He thong
