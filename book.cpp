@@ -9,6 +9,16 @@ void init_list(List &list) {
 	list = newList;
 }
 
+bool is_list_empty(List &list, Book *book) {
+    if (!list.head) {
+        list.head = list.tail = book;
+        book->next = book->prev = nullptr;
+        return true;
+    }
+
+    return false;
+}
+
 Book* create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type) {
     Book *newBook = new Book;
 
@@ -22,17 +32,40 @@ Book* create_book(int book_id, const std::string &title, const std::string &auth
     return newBook;
 }
 
+void insert_at_head(List &list, Book *book) {
+    if (is_list_empty(list, book)) return;
+
+    list.head->prev = book;
+    book->next = list.head;
+    book->prev = nullptr;
+    list.head = book;
+}
+
 void insert_at_tail(List &list, Book *book) {
-    if (!list.head) {
-        list.head = list.tail = book;
-        book->next = book->prev = nullptr;
-        return;
-    }
+    if (is_list_empty(list, book)) return;
 
     book->prev = list.tail;
     book->next = nullptr;
     list.tail->next = book;
     list.tail = book;
+}
+
+void insert_at_after(List &list, Book *book_before, Book *insert_book) {
+    insert_book->prev = book_before;
+    insert_book->next = book_before->next;
+
+    if (book_before->next) {
+        book_before->next->prev = insert_book;
+    } 
+    else {
+        list.tail = insert_book;
+    }
+
+    book_before->next = insert_book;
+}
+
+void insert_at_middle() {
+
 }
 
 void print_books(Book *head) {

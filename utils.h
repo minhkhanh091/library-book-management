@@ -28,7 +28,7 @@ void print_menu_2() {
     std::cout << "==============================\n";
 }
 
-Book* find_middle();
-
+Book *find_middle();
+void sort_books_by_type_and_id(List &list);
 
 #endif

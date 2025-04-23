@@ -1,7 +1,7 @@
 ﻿#ifndef BOOK_H
 #define BOOK_H
 
-typedef struct Book {
+struct Book {
     int book_id;
     std::string title;
     std::string author;
@@ -9,11 +9,11 @@ typedef struct Book {
     int publication_year;
     std::string type;
 
-    struct Book *next;
-    struct Book *prev;
-} Book;
+    Book *next;
+    Book *prev;
+};
 
-typedef struct List {
+struct List {
     Book *head, *tail;
 };
 
@@ -22,10 +22,12 @@ void init_list(List& list);
 
 void print_books(Book *head);
 
-void insert_at_head(Book** head, Book *new_book);
+bool is_list_empty(List &list, Book *book);
+void insert_at_head(Book *head, Book *new_book);
 void insert_at_tail(List &list, Book *book);
-void insert_at_position(Book** head, Book* new_book, int position);
-void delete_by_position(Book** head, int position);
+void insert_at_position(Book *head, Book *new_book, int position);
+void insert_at_middle();
+void delete_by_position(Book *head, int position);
 
 void sort_books(Book** head);
 void insert_sorted(Book** head, Book* new_book);
