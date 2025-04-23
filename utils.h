@@ -7,6 +7,8 @@ void print_menu_1();
 void print_menu_2();
 
 void sort_books_by_type_and_id(List &list);
-void insert_book_sorted(List &list);
+Book *find_middle(List &list);
+
+void find_author_with_most_books(List &list);
 
 #endif

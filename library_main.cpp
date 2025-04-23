@@ -11,6 +11,7 @@ Finished on:
 #include "book.h"
 #include "utils.h"
 #include "file_io.h"
+#include "handle_menu.h"
 
 void read_input(int choice, int need_maintain_order, List &list) {
 	if (need_maintain_order) read_from_keyboard(list, need_maintain_order);
@@ -18,10 +19,7 @@ void read_input(int choice, int need_maintain_order, List &list) {
 	else read_from_keyboard(list, need_maintain_order);
 }
 
-int main() {
-	List list;
-	init_list(list);
-
+int get_choice() {
 	int choice;
 
 	do {
@@ -34,6 +32,15 @@ int main() {
 			std::cout << "\n";
 		}
 	} while (choice <= 0 || choice > 2);
+
+	return choice;
+}
+
+int main() {
+	List list;
+	init_list(list);
+
+	int choice = get_choice();
 
 	read_input(choice, 0, list);
 
@@ -56,15 +63,22 @@ int main() {
 
 		case 1:
 		{
+			std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
+			std::cout << "\nInsertion: ";
+			std::cout << "\n	- [1]: Beginning\n";
+			std::cout << "\n	- [2]: End\n";
+			std::cout << "\n	- [3]: Middle\n";
+			std::cout << "\nDeletion: ";
+			std::cout << "\n	- [4]: Beginning\n";
+			std::cout << "\n	- [5]: End\n";
+			std::cout << "\n	- [6]: Middle\n";
+		    std::cout << "\n==============================\n";
+			std::cout << "Please enter a choice from [0, 6]";
 
+		    break;
 		}
 
 		case 2:
-		{
-
-		}
-
-		case 3:
 		{
 			sort_books_by_type_and_id(list);
 			print_books(list.head);
@@ -72,12 +86,19 @@ int main() {
 			break;
 		}
 
-		case 4:
+		case 3:
 		{
 			sort_books_by_type_and_id(list);
 			read_input(0, 1, list);
 			print_books(list.head);
 			
+			break;
+		}
+
+		case 4:
+		{
+			find_author_with_most_books(list);
+
 			break;
 		}		
 	}

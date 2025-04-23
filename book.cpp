@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "book.h"
+#include "utils.h"
 
 void init_list(List &list) {
 	List newList;
@@ -50,6 +51,11 @@ void insert_at_tail(List &list, Book *new_book) {
     list.tail = new_book;
 }
 
+void insert_at_middle(List &list, Book *new_book) {
+    Book *book_before = find_middle(list);
+    insert_at_after(list, book_before, new_book);
+}
+
 void insert_at_after(List &list, Book *book_before, Book *insert_book) {
     insert_book->prev = book_before;
     insert_book->next = book_before->next;
@@ -62,10 +68,6 @@ void insert_at_after(List &list, Book *book_before, Book *insert_book) {
     }
 
     book_before->next = insert_book;
-}
-
-void insert_at_middle() {
-
 }
 
 void insert_maintain_order(List &list, Book *new_book) {
