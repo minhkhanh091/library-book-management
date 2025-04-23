@@ -100,6 +100,35 @@ int main() {
 			find_author_with_most_books(list);
 
 			break;
-		}		
+		}
+
+		case 5:
+		{
+			find_publisher_with_fewest_books(list);
+
+			break;
+		}
+
+		case 6:
+		{
+			print_statistics_by_year(list);
+
+			break;
+		}	
+
+		case 7:
+		{
+			count_books_by_type(list);
+
+			break;
+		}
+
+		case 8:
+		{
+			find_books_by_title(list, "Lap trinh");
+
+			break;
+		}
+
 	}
 }
