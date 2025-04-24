@@ -34,8 +34,8 @@ void read_from_file(List &list, const char *file_name) {
         if (std::getline(ss, tmp, '|')) publication_year = stoi(tmp);
         if (std::getline(ss, type, '|'));
 
-        Book *newBook = create_book(book_id, title, author, publisher, publication_year, type);
-        insert_at_tail(list, newBook);
+        Book *new_book = create_book(book_id, title, author, publisher, publication_year, type);
+        insert_at_tail(list, new_book);
     }
 
     file.close();
@@ -44,9 +44,11 @@ void read_from_file(List &list, const char *file_name) {
 void read_from_keyboard(List &list, int need_maintain_order) {
     int choice;
     do {
-        std::cout << "Enter [1] to add a book, [0] to exit: ";
+        std::cout << "\nEnter [1] to add a book, [0] to exit: ";
         std::cin >> choice;
         std::cin.ignore();
+
+        std::cout << "\n";
 
         if (!choice) break;
 
@@ -79,6 +81,5 @@ void read_from_keyboard(List &list, int need_maintain_order) {
         else insert_at_tail(list, new_book);
 
         std::cout << "Book added successfully!\n";
-
-    } while (true);
+    } while (choice);
 }

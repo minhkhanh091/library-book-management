@@ -8,10 +8,12 @@
 #include "utils.h"
 #include "book.h"
 
+#define new_line std::cout << "\n"
+
 /*
 
 Insertion Sort
-    type: A-Z, book_id: assending
+    type: A-Z & book_id: assending
 
 */
 void sort_books_by_type_and_id(List &list) {
@@ -37,6 +39,14 @@ void sort_books_by_type_and_id(List &list) {
 
     list.head = sorted.head;
     list.tail = sorted.tail;
+
+    std::cout << "\nSorted! Do you want to print the list?";
+    std::cout << "\nEnter [1] to accept, [0] to deny: ";
+
+    int choice;
+    std::cin >> choice;
+
+    if (choice) print_books(list);
 }
 
 Book *find_middle(List &list) {
@@ -74,8 +84,8 @@ void find_author_with_most_books(List &list) {
         }
     }
 
-    std::cout << "Author with the most books: " << author_name << "\n";
-    std::cout << "His books: ";
+    std::cout << "\nAuthor name: " << author_name;
+    std::cout << "\nHis books: ";
 
     cur = list.head;
 
@@ -86,8 +96,6 @@ void find_author_with_most_books(List &list) {
 
         cur = cur->next;
     }
-
-    std::cout << "\n";
 }
 
 void find_publisher_with_fewest_books(List &list) {
@@ -105,7 +113,7 @@ void find_publisher_with_fewest_books(List &list) {
     }
 
     std::string publisher_name;
-    unsigned int min_book = 0xFFFFFFFF;
+    unsigned int min_book = 0xffffffff;
 
     for (auto &it : publisher_book_count) {
         if ((unsigned int) it.second < min_book) {
@@ -114,20 +122,18 @@ void find_publisher_with_fewest_books(List &list) {
         }
     }
 
-    std::cout << "Publisher with the fewest books: " << publisher_name << "\n";
-    std::cout << "Their books: ";
+    std::cout << "\nPublisher name: " << publisher_name;
+    std::cout << "\nTheir books: ";
 
     cur = list.head;
 
-    while (cur) {
+    while (cur) {        
         if (cur->publisher == publisher_name) {
-            std::cout << "[" << cur->title << "]";
+            std::cout << "[" << cur->title << "] ";
         }
 
         cur = cur->next;
     }
-
-    std::cout << "\n";
 }
 
 void print_statistics_by_year(List &list) {
@@ -145,13 +151,12 @@ void print_statistics_by_year(List &list) {
     }
 
     for (auto &it : book_statistics_year) {
+        new_line;
         std::cout << it.first << ": ";
 
         for (auto &book : it.second) {
             std::cout << "[" << book << "]";
         }
-
-        std::cout << "\n";
     }
 }
 
@@ -168,6 +173,8 @@ void count_books_by_type(List &list) {
         books_by_type[cur->type]++;
         cur = cur->next;
     }
+
+    new_line;
 
     for (auto &it : books_by_type) {
         std::cout << it.first << ": " << it.second << "\n";
@@ -204,6 +211,9 @@ void waiting() {
 
     std::cout << "\nEnter [1] to continue, [0] to exit!: ";
     std::cin >> choice;
+    // new_line;
+
+    new_line;
 
     if (!choice) exit(1);  
 }

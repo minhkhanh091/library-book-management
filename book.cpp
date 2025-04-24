@@ -10,7 +10,7 @@ void init_list(List &list) {
 	list = newList;
 }
 
-bool is_list_empty(List &list, Book *book) {
+bool insert_head_if_empty(List &list, Book *book) {
     if (!list.head) {
         list.head = list.tail = book;
         book->next = book->prev = nullptr;
@@ -34,7 +34,7 @@ Book* create_book(int book_id, const std::string &title, const std::string &auth
 }
 
 void insert_at_head(List &list, Book *new_book) {
-    if (is_list_empty(list, new_book)) return;
+    if (insert_head_if_empty(list, new_book)) return;
 
     list.head->prev = new_book;
     new_book->next = list.head;
@@ -43,17 +43,12 @@ void insert_at_head(List &list, Book *new_book) {
 }
 
 void insert_at_tail(List &list, Book *new_book) {
-    if (is_list_empty(list, new_book)) return;
+    if (insert_head_if_empty(list, new_book)) return;
 
     new_book->prev = list.tail;
     new_book->next = nullptr;
     list.tail->next = new_book;
     list.tail = new_book;
-}
-
-void insert_at_middle(List &list, Book *new_book) {
-    Book *book_before = find_middle(list);
-    insert_at_after(list, book_before, new_book);
 }
 
 void insert_at_after(List &list, Book *book_before, Book *insert_book) {
@@ -68,6 +63,11 @@ void insert_at_after(List &list, Book *book_before, Book *insert_book) {
     }
 
     book_before->next = insert_book;
+}
+
+void insert_at_middle(List &list, Book *new_book) {
+    Book *book_before = find_middle(list);
+    insert_at_after(list, book_before, new_book);
 }
 
 void insert_maintain_order(List &list, Book *new_book) {
@@ -87,8 +87,10 @@ void insert_maintain_order(List &list, Book *new_book) {
     }
 }
 
-void print_books(Book *head) {
-    Book *cur = head;
+void print_books(List &list) {
+    Book *cur = list.head;
+
+    std::cout << "\n";
 
     while (cur) {
         std::cout << cur->book_id << " | " << cur->title << " | " << cur->author << " | " << cur->publisher << " | " << cur->publication_year << " | " << cur->type << "\n";

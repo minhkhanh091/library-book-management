@@ -3,6 +3,8 @@
 #include "utils.h"
 #include "file_io.h"
 
+#define new_line std::cout << "\n"
+
 void print_get_choice_menu_1() {
     std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
     std::cout << "Please select the data source to operate on:\n";
@@ -10,7 +12,7 @@ void print_get_choice_menu_1() {
     std::cout << "1. Read books from file\n";
     std::cout << "2. Enter books from keyboard\n";
     std::cout << "\n";
-    std::cout << "==============================\n";
+    std::cout << "===================================\n";
 }
 
 void print_get_choice_menu_2() {
@@ -22,9 +24,9 @@ void print_get_choice_menu_2() {
     std::cout << "5. Find the publisher with the fewest books\n";
     std::cout << "6. Statistics by publication year\n";
     std::cout << "7. Count books by type\n";
-    std::cout << "8. Find books by type ('Lap trinh')\n";
+    std::cout << "8. Find books by type\n";
     std::cout << "0. Exit\n";
-    std::cout << "==============================\n";	
+    std::cout << "===================================\n";	
 }
 
 void handle_main_menu(List &list) {
@@ -66,7 +68,8 @@ void handle_main_menu(List &list) {
 			case 2:
 			{
 				sort_books_by_type_and_id(list);
-				print_books(list.head);
+
+				new_line;
 
 				waiting();
 				break;
@@ -76,15 +79,19 @@ void handle_main_menu(List &list) {
 			{
 				sort_books_by_type_and_id(list);
 				input_source(0, 1, list);
-				print_books(list.head);
 				
+				new_line;
+
 				waiting();
 				break;
 			}
 
 			case 4:
 			{
+			    std::cout << "\n-> FIND THE AUTHOR WITH THE MOST BOOKS";
 				find_author_with_most_books(list);
+
+				new_line;
 
 				waiting();
 				break;
@@ -92,7 +99,10 @@ void handle_main_menu(List &list) {
 
 			case 5:
 			{
+			    std::cout << "\n-> FIND THE PUBLISHER WITH THE FEWEST BOOKS";
 				find_publisher_with_fewest_books(list);
+
+				new_line;
 
 				waiting();
 				break;
@@ -100,7 +110,10 @@ void handle_main_menu(List &list) {
 
 			case 6:
 			{
+			    std::cout << "\n-> STATISTICS BY PUBLICATION YEAR";
 				print_statistics_by_year(list);
+
+				new_line;
 
 				waiting();
 				break;
@@ -108,7 +121,10 @@ void handle_main_menu(List &list) {
 
 			case 7:
 			{
+			    std::cout << "\n-> COUNT BOOKS BY TYPE";
 				count_books_by_type(list);
+
+				new_line;
 
 				waiting();
 				break;
@@ -116,13 +132,16 @@ void handle_main_menu(List &list) {
 
 			case 8:
 			{
+			    std::cout << "\n-> FIND BOOKS BY TYPE";				
 				std::cin.ignore();
 				std::string get_title;
 
-				std::cout << "Enter a title: ";
+				std::cout << "\nEnter the type name (e.g., 'Lap trinh', 'AI'): ";
 				std::getline(std::cin, get_title);
 
 				find_books_by_title(list, get_title);
+
+				new_line;
 
 				waiting();
 				break;

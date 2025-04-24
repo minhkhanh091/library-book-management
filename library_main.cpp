@@ -17,7 +17,7 @@ int get_choice() {
 
 	do {
 		print_get_choice_menu_1();
-		std::cout << "Your choice: ";
+		std::cout << "Enter a choice from [1, 2] to operate: ";
 		std::cin >> choice;
 
 		if (choice <= 0 || choice > 2) {

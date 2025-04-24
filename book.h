@@ -18,9 +18,9 @@ struct List {
 };
 
 Book *create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type);
-void init_list(List& list);
+void init_list(List &list);
 
-void print_books(Book *head);
+void print_books(List &list);
 
 bool is_list_empty(List &list, Book *book);
 void insert_at_head(List &list, Book *new_book);
