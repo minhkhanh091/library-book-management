@@ -119,7 +119,7 @@ void find_publisher_with_fewest_books(List &list) {
     std::string publisher_name;
     long min_book = 0xffffffff;
 
-    for (const auto &it : publisher_book_count) {
+    for (auto &it : publisher_book_count) {
         if ((long) it.second < min_book) {
             min_book = it.second;
             publisher_name = it.first;

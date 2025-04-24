@@ -17,7 +17,7 @@ struct List {
     Book *head, *tail;
 };
 
-Book *create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type);
+Book *create_book(int book_id, std::string &title, std::string &author, std::string &publisher, int publication_year, std::string &type);
 void init_list(List &list);
 
 void print_books(List &list);

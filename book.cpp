@@ -21,7 +21,7 @@ bool insert_head_if_empty(List &list, Book *book) {
     return false;
 }
 
-Book* create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type) {
+Book* create_book(int book_id, std::string &title, std::string &author, std::string &publisher, int publication_year, std::string &type) {
     Book *new_book = new Book;
 
     if (!new_book) {
