@@ -3,7 +3,9 @@
 
 #include "book.h"
 
-void print_get_input_choice_menu();
+void print_get_choice_menu_1();
+void print_get_choice_menu_2();
 
+void handle_main_menu(List &list);
 
 #endif

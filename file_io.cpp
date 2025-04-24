@@ -4,6 +4,12 @@
 
 #include "file_io.h"
 
+void input_source(int choice, int need_maintain_order, List &list) {
+    if (need_maintain_order) read_from_keyboard(list, need_maintain_order);
+    else if (choice) read_from_file(list, "books.txt");
+    else read_from_keyboard(list, need_maintain_order);
+}
+
 void read_from_file(List &list, const char *file_name) {
     std::ifstream file(file_name);
 

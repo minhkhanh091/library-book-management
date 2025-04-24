@@ -3,9 +3,6 @@
 
 #include "book.h"
 
-void print_menu_1();
-void print_menu_2();
-
 void sort_books_by_type_and_id(List &list);
 Book *find_middle(List &list);
 
@@ -15,5 +12,7 @@ void find_books_by_title(List &list, std::string type);
 
 void print_statistics_by_year(List &list);
 void count_books_by_type(List &list);
+
+void waiting();
 
 #endif
