@@ -51,17 +51,16 @@ void handle_main_menu(List &list) {
 			case 1:
 			{
 				std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
-				std::cout << "\nInsertion: ";
-				std::cout << "\n	- [1]: Beginning\n";
-				std::cout << "\n	- [2]: End\n";
-				std::cout << "\n	- [3]: Middle\n";
-				std::cout << "\nDeletion: ";
-				std::cout << "\n	- [4]: Beginning\n";
-				std::cout << "\n	- [5]: End\n";
-				std::cout << "\n	- [6]: Middle\n";
+				std::cout << "Insertion: [1]: Beginning, [2]: End, [3]: Middle\n";
+				std::cout << "Deletion: [4]: Beginning, [5]: End, [6]: Middle";
 			    std::cout << "\n==============================\n";
-				std::cout << "Please enter a choice from [0, 6]";
+				std::cout << "Enter a choice from [1, 6] to operate: ";
 
+				
+
+				new_line;
+
+				waiting();
 			    break;
 			}
 
@@ -77,8 +76,8 @@ void handle_main_menu(List &list) {
 
 			case 3:
 			{
-				sort_books_by_type_and_id(list);
 				input_source(0, 1, list);
+				sort_books_by_type_and_id(list);
 				
 				new_line;
 

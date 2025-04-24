@@ -10,6 +10,16 @@
 
 #define new_line std::cout << "\n"
 
+bool is_list_empty(Book *head) {
+    if (!head) {
+        std::cout << "Cannot perform because the list is empty!";
+
+        return true;
+    }
+
+    return false;
+}
+
 /*
 
 Insertion Sort
@@ -17,7 +27,10 @@ Insertion Sort
 
 */
 void sort_books_by_type_and_id(List &list) {
-    if (!list.head || !list.head->next) return;    
+    if (!list.head || !list.head->next) {
+        std::cout << "Cannot perform sorting because the list is empty or contains only one book!";
+        return;
+    }   
 
     List sorted;
     init_list(sorted);
@@ -27,18 +40,15 @@ void sort_books_by_type_and_id(List &list) {
     while (cur) {
         Book *cur_next = cur->next;
 
-        if (!sorted.head) {
-            insert_at_head(sorted, cur);
-        }
-        else {
-            insert_maintain_order(sorted, cur);
-        }
+        if (!sorted.head) insert_at_head(sorted, cur);
+        else insert_maintain_order(sorted, cur);
 
         cur = cur_next;
     }
 
     list.head = sorted.head;
     list.tail = sorted.tail;
+
 
     std::cout << "\nSorted! Do you want to print the list?";
     std::cout << "\nEnter [1] to accept, [0] to deny: ";
@@ -61,10 +71,7 @@ Book *find_middle(List &list) {
 }
 
 void find_author_with_most_books(List &list) {
-    if (!list.head) {
-        std::cout << "Cannot perform because the list is empty!";
-        return;
-    }
+    if (is_list_empty(list.head)) return;
 
     std::map<std::string, int> author_book_count;
     Book *cur = list.head;
@@ -99,10 +106,7 @@ void find_author_with_most_books(List &list) {
 }
 
 void find_publisher_with_fewest_books(List &list) {
-    if (!list.head) {
-        std::cout << "Cannot perform because the list is empty!";
-        return;
-    }
+    if (is_list_empty(list.head)) return;
 
     std::map<std::string, int> publisher_book_count;
     Book *cur = list.head;
@@ -113,10 +117,10 @@ void find_publisher_with_fewest_books(List &list) {
     }
 
     std::string publisher_name;
-    unsigned int min_book = 0xffffffff;
+    long min_book = 0xffffffff;
 
-    for (auto &it : publisher_book_count) {
-        if ((unsigned int) it.second < min_book) {
+    for (const auto &it : publisher_book_count) {
+        if ((long) it.second < min_book) {
             min_book = it.second;
             publisher_name = it.first;
         }
@@ -137,10 +141,7 @@ void find_publisher_with_fewest_books(List &list) {
 }
 
 void print_statistics_by_year(List &list) {
-    if (!list.head) {
-        std::cout << "Cannot perform because the list is empty!";
-        return;
-    }
+    if (is_list_empty(list.head)) return;
 
     std::map<int, std::vector<std::string>> book_statistics_year;
     Book *cur = list.head;
@@ -161,10 +162,7 @@ void print_statistics_by_year(List &list) {
 }
 
 void count_books_by_type(List &list) {
-    if (!list.head) {
-        std::cout << "Cannot perform because the list is empty!";
-        return;
-    }
+    if (is_list_empty(list.head)) return;
 
     std::map<std::string, int> books_by_type;
     Book *cur = list.head;
@@ -182,6 +180,8 @@ void count_books_by_type(List &list) {
 }
 
 void find_books_by_title(List &list, std::string type) {
+    if (is_list_empty(list.head)) return;
+
     std::vector<std::string> books_list;
 
     Book *cur = list.head;
@@ -215,5 +215,5 @@ void waiting() {
 
     new_line;
 
-    if (!choice) exit(1);  
+    if (!choice) exit(0);  
 }

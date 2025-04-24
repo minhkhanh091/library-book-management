@@ -3,6 +3,8 @@
 
 #include "book.h"
 
+bool is_list_empty(Book *head);
+
 void sort_books_by_type_and_id(List &list);
 Book *find_middle(List &list);
 

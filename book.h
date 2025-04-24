@@ -22,20 +22,15 @@ void init_list(List &list);
 
 void print_books(List &list);
 
-bool is_list_empty(List &list, Book *book);
 void insert_at_head(List &list, Book *new_book);
 void insert_at_tail(List &list, Book *new_book);
 void insert_at_after(List &list, Book *book_before, Book *insert_book);
 void insert_at_middle();
 
-void delete_at_head(Book *head, int position);
-void delete_at_head(Book *head, int position);
-void delete_at_head(Book *head, int position);
+void delete_at_head(List &list);
+void delete_at_tail(List &list);
+void delete_at_middle(List &list);
 
-
-void sort_books(Book** head);
 void insert_maintain_order(List &list, Book *new_book);
-
-void free_books(Book* head);
 
 #endif

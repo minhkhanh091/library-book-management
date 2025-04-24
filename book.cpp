@@ -14,6 +14,7 @@ bool insert_head_if_empty(List &list, Book *book) {
     if (!list.head) {
         list.head = list.tail = book;
         book->next = book->prev = nullptr;
+
         return true;
     }
 
@@ -22,6 +23,11 @@ bool insert_head_if_empty(List &list, Book *book) {
 
 Book* create_book(int book_id, const std::string &title, const std::string &author, const std::string &publisher, int publication_year, const std::string &type) {
     Book *new_book = new Book;
+
+    if (!new_book) {
+        std::cout << "Memory allocation failed for new book!\n";
+        exit(1);
+    }
 
     new_book->book_id = book_id;
     new_book->title = title;
@@ -77,14 +83,59 @@ void insert_maintain_order(List &list, Book *new_book) {
         cur = cur->next;
     }
 
-    if (!cur) {
-        insert_at_tail(list, new_book);
-    }
-    else if (cur == list.head) {
-        insert_at_head(list, new_book);
+    if (!cur) insert_at_tail(list, new_book);
+    else if (cur == list.head) insert_at_head(list, new_book);
+    else insert_at_after(list, cur->prev, new_book);
+}
+
+void delete_at_head(List &list) {
+    if (is_list_empty(list.head)) return;
+
+    Book *temp = list.head;
+    list.head = list.head->next;
+
+    if (list.head) {
+        list.head->prev = nullptr;
     } else {
-        insert_at_after(list, cur->prev, new_book);
+        list.tail = nullptr;
     }
+
+    delete temp;
+}
+
+void delete_at_tail(List &list) {
+    if (is_list_empty(list.head)) return;
+
+    Book *temp = list.tail;
+    list.tail = list.tail->prev;
+
+    if (list.tail) {
+        list.tail->next = nullptr;
+    } else {
+        list.head = nullptr;
+    }
+
+    delete temp;
+}
+
+void delete_at_middle(List &list) {
+    if (is_list_empty(list.head)) return;
+
+    Book *middle = find_middle(list);
+
+    if (middle->prev) {
+        middle->prev->next = middle->next;
+    } else {
+        list.head = middle->next;
+    }
+
+    if (middle->next) {
+        middle->next->prev = middle->prev;
+    } else {
+        list.tail = middle->prev;
+    }
+
+    delete middle;
 }
 
 void print_books(List &list) {
