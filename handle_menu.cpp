@@ -88,7 +88,7 @@ void handle_main_menu(List &list) {
 			            break;
 			    }
 
-			    std::cout << "\nSuccessfully done. Would you like to print the list??";
+			    std::cout << "\nSuccessfully done!. Would you like to print the list?";
 			    std::cout << "\nEnter [1] to accept, [0] to deny: ";
 
 			    int choice;

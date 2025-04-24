@@ -5,9 +5,9 @@
 #include "file_io.h"
 
 void input_source(int choice, int need_maintain_order, List &list) {
-    if (need_maintain_order) read_from_keyboard(list, need_maintain_order, 3);
+    if (need_maintain_order) read_from_keyboard(list, need_maintain_order, 2);
     else if (choice == 1) read_from_file(list, "books.txt");
-    else if (choice == 2) read_from_keyboard(list, need_maintain_order, 3);
+    else if (choice == 2) read_from_keyboard(list, need_maintain_order, 2);
 }
 
 /*
@@ -51,7 +51,7 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
     int choice;
 
     do {
-        std::cout << "\nEnter [1] to add a book, [0] to exit: ";
+        std::cout << "\nEnter [1] to add a book, [0] to return to the main menu: ";
         std::cin >> choice;
         std::cin.ignore();
 
@@ -99,19 +99,18 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
                     break;
 
                 case 2:
-                    insert_at_middle(list, new_book);
-                    
+                    insert_at_tail(list, new_book);                    
                     break;
 
                 case 3:
                 default:
-                    insert_at_tail(list, new_book);
+                    insert_at_middle(list, new_book);
                     
                     break;
             }
         }
 
-        std::cout << "Book added successfully!\n";
+        std::cout << "\nBook added successfully!\n";
 
     } while (choice);
 }

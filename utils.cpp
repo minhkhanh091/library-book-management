@@ -209,9 +209,8 @@ void find_books_by_title(List &list, std::string type) {
 void waiting() {
     int choice;
 
-    std::cout << "\nEnter [1] to continue, [0] to exit!: ";
+    std::cout << "\nEnter [1] to return to the main menu, [0] to exit!: ";
     std::cin >> choice;
-    // new_line;
 
     new_line;
 

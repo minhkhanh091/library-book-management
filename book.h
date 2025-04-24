@@ -26,11 +26,10 @@ void insert_at_head(List &list, Book *new_book);
 void insert_at_tail(List &list, Book *new_book);
 void insert_at_after(List &list, Book *book_before, Book *insert_book);
 void insert_at_middle(List &list, Book *new_book);
+void insert_maintain_order(List &list, Book *new_book);
 
 void delete_at_head(List &list);
 void delete_at_tail(List &list);
 void delete_at_middle(List &list);
-
-void insert_maintain_order(List &list, Book *new_book);
 
 #endif

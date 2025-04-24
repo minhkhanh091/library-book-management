@@ -144,7 +144,13 @@ void print_books(List &list) {
     std::cout << "\n";
 
     while (cur) {
-        std::cout << cur->book_id << " | " << cur->title << " | " << cur->author << " | " << cur->publisher << " | " << cur->publication_year << " | " << cur->type << "\n";
+        std::cout << cur->book_id 
+                  << " | " << cur->title 
+                  << " | " << cur->author 
+                  << " | " << cur->publisher 
+                  << " | " << cur->publication_year 
+                  << " | " << cur->type << "\n";
+                  
         cur = cur->next;
     }
 }
