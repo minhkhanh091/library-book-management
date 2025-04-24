@@ -50,17 +50,55 @@ void handle_main_menu(List &list) {
 
 			case 1:
 			{
-				std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
-				std::cout << "Insertion: [1]: Beginning, [2]: End, [3]: Middle\n";
-				std::cout << "Deletion: [4]: Beginning, [5]: End, [6]: Middle";
+			    std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
+			    std::cout << "Insertion: [1]: Beginning, [2]: End, [3]: Middle\n";
+			    std::cout << "Deletion: [4]: Beginning, [5]: End, [6]: Middle";
 			    std::cout << "\n==============================\n";
-				std::cout << "Enter a choice from [1, 6] to operate: ";
+			    std::cout << "Enter a choice from [1, 6] to operate: ";
 
-				
+			    int sub_choice;
 
-				new_line;
+			    std::cin >> sub_choice;
+			    std::cin.ignore();
 
-				waiting();
+			    switch (sub_choice) {
+			        case 1:
+			        case 2:
+			        case 3:
+			            read_from_keyboard(list, 0, sub_choice);
+			            
+			            break;
+
+			        case 4:
+			            delete_at_head(list);
+
+			            break;
+			        case 5:
+			            delete_at_tail(list);
+			            
+			            break;
+			        case 6:
+			            delete_at_middle(list);
+			            
+			            break;
+
+			        default:
+			            std::cout << "Please enter a choice from [1, 6]\n";
+
+			            break;
+			    }
+
+			    std::cout << "\nSuccessfully done. Would you like to print the list??";
+			    std::cout << "\nEnter [1] to accept, [0] to deny: ";
+
+			    int choice;
+			    std::cin >> choice;
+
+			    if (choice) print_books(list);
+
+			    new_line;
+			    
+			    waiting();
 			    break;
 			}
 
@@ -77,7 +115,6 @@ void handle_main_menu(List &list) {
 			case 3:
 			{
 				input_source(0, 1, list);
-				sort_books_by_type_and_id(list);
 				
 				new_line;
 
@@ -134,7 +171,6 @@ void handle_main_menu(List &list) {
 			    std::cout << "\n-> FIND BOOKS BY TYPE";				
 				std::cin.ignore();
 				std::string get_title;
-
 				std::cout << "\nEnter the type name (e.g., 'Lap trinh', 'AI'): ";
 				std::getline(std::cin, get_title);
 
@@ -146,5 +182,5 @@ void handle_main_menu(List &list) {
 				break;
 			}
 		}
-	} while (choice);	
+	} while (choice);
 }

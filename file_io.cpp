@@ -5,11 +5,16 @@
 #include "file_io.h"
 
 void input_source(int choice, int need_maintain_order, List &list) {
-    if (need_maintain_order) read_from_keyboard(list, need_maintain_order);
+    if (need_maintain_order) read_from_keyboard(list, need_maintain_order, 3);
     else if (choice == 1) read_from_file(list, "books.txt");
-    else if (choice == 2) read_from_keyboard(list, need_maintain_order);
+    else if (choice == 2) read_from_keyboard(list, need_maintain_order, 3);
 }
 
+/*
+
+Please make sure the data format is correct before proceeding
+
+*/
 void read_from_file(List &list, const char *file_name) {
     std::ifstream file(file_name);
 
@@ -19,6 +24,7 @@ void read_from_file(List &list, const char *file_name) {
     }
 
     std::string line;
+
     while (std::getline(file, line)) {
         std::stringstream ss(line);
 
@@ -27,12 +33,12 @@ void read_from_file(List &list, const char *file_name) {
         int publication_year;
         std::string tmp;
 
-        if (std::getline(ss, tmp, '|')) book_id = stoi(tmp);
-        if (std::getline(ss, title, '|'));
-        if (std::getline(ss, author, '|'));
-        if (std::getline(ss, publisher, '|'));
-        if (std::getline(ss, tmp, '|')) publication_year = stoi(tmp);
-        if (std::getline(ss, type, '|'));
+        std::getline(ss, tmp, '|'); book_id = stoi(tmp);
+        std::getline(ss, title, '|');
+        std::getline(ss, author, '|');
+        std::getline(ss, publisher, '|');
+        std::getline(ss, tmp, '|'); publication_year = stoi(tmp);
+        std::getline(ss, type, '|');
 
         Book *new_book = create_book(book_id, title, author, publisher, publication_year, type);
         insert_at_tail(list, new_book);
@@ -41,7 +47,7 @@ void read_from_file(List &list, const char *file_name) {
     file.close();
 }
 
-void read_from_keyboard(List &list, int need_maintain_order) {
+void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
     int choice;
 
     do {
@@ -77,10 +83,35 @@ void read_from_keyboard(List &list, int need_maintain_order) {
         std::getline(std::cin, type);
 
         Book* new_book = create_book(book_id, title, author, publisher, publication_year, type);
-        
-        if (need_maintain_order) insert_maintain_order(list, new_book);
-        else insert_at_tail(list, new_book);
+
+        if (!new_book) {
+            std::cout << "Memory allocation failed for new book!\n";
+            exit(1);
+        }
+
+        if (need_maintain_order) {
+            insert_maintain_order(list, new_book);
+        } else {
+            switch (insert_pos) {
+                case 1:
+                    insert_at_head(list, new_book);
+
+                    break;
+
+                case 2:
+                    insert_at_middle(list, new_book);
+                    
+                    break;
+
+                case 3:
+                default:
+                    insert_at_tail(list, new_book);
+                    
+                    break;
+            }
+        }
 
         std::cout << "Book added successfully!\n";
+
     } while (choice);
 }
