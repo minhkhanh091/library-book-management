@@ -2,4 +2,4 @@
 1. git clone git@github.com:minhkhanh091/library-book-management.git
 2. make && ./library
 
-Test
+# New update on README
