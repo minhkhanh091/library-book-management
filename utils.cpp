@@ -187,10 +187,19 @@ void find_books_by_title(List &list, std::string type) {
     Book *cur = list.head;
 
     while (cur) {
-        if (cur->type == type) {
-            books_list.push_back(cur->title);
-        }
+        bool match = true;
+        
+        if (cur->type.size() != type.size()) match = false;
 
+        // case insensitive
+        for (int i = 0; i < type.size(); i++) {
+            if (tolower(cur->type[i]) != tolower(type[i])) {
+                match = false;
+                break;
+            }
+        }            
+
+        if (match) books_list.push_back(cur->title);
         cur = cur->next;
     }
 
