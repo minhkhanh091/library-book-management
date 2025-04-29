@@ -37,6 +37,7 @@ int main() {
 	int choice = get_choice();
 
 	input_source(choice, 0, list);
-
+	
+	print_books(list);
 	handle_main_menu(list);
 }

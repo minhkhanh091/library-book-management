@@ -8,7 +8,7 @@
 #include "utils.h"
 #include "book.h"
 
-#define new_line std::cout << "\n"
+#define NEW_LINE std::cout << "\n"
 
 bool is_list_empty(Book *head) {
     if (!head) {
@@ -152,7 +152,7 @@ void print_statistics_by_year(List &list) {
     }
 
     for (auto &it : book_statistics_year) {
-        new_line;
+        NEW_LINE;
         std::cout << it.first << ": ";
 
         for (auto &book : it.second) {
@@ -172,7 +172,7 @@ void count_books_by_type(List &list) {
         cur = cur->next;
     }
 
-    new_line;
+    NEW_LINE;
 
     for (auto &it : books_by_type) {
         std::cout << it.first << ": " << it.second << "\n";
@@ -220,7 +220,7 @@ void waiting(int &choice) {
     std::cout << "\nEnter a choice from [0, 8] to continue: ";
     std::cin >> choice;
 
-    new_line;
+    NEW_LINE;
 }
 
 std::string book_format_text(std::string text, int len) {

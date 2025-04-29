@@ -95,7 +95,6 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
             switch (insert_pos) {
                 case 1:
                     insert_at_head(list, new_book);
-
                     break;
 
                 case 2:
@@ -105,7 +104,6 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
                 case 3:
                 default:
                     insert_at_middle(list, new_book);
-                    
                     break;
             }
         }

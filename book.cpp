@@ -21,6 +21,7 @@ bool insert_head_if_empty(List &list, Book *book) {
     return false;
 }
 
+// TODO: Constructor
 Book* create_book(int book_id, std::string &title, std::string &author, std::string &publisher, int publication_year, std::string &type) {
     Book *new_book = new Book;
 

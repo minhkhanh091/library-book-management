@@ -3,7 +3,7 @@
 #include "utils.h"
 #include "file_io.h"
 
-#define new_line std::cout << "\n"
+#define NEW_LINE std::cout << "\n"
 
 void print_get_choice_menu_1() {
     std::cout << "\n===== LIBRARY BOOK MANAGEMENT =====\n";
@@ -91,8 +91,7 @@ void handle_main_menu(List &list) {
 
 			    if (choice) print_books(list);
 
-			    new_line;
-			    
+			    NEW_LINE;
 			    waiting(choice);
 			    break;
 			}
@@ -101,8 +100,7 @@ void handle_main_menu(List &list) {
 			{
 				sort_books_by_type_and_id(list);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
@@ -111,8 +109,7 @@ void handle_main_menu(List &list) {
 			{
 				input_source(0, 1, list);
 				
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
@@ -122,8 +119,7 @@ void handle_main_menu(List &list) {
 			    std::cout << "\n-> FIND THE AUTHOR WITH THE MOST BOOKS";
 				find_author_with_most_books(list);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
@@ -133,8 +129,7 @@ void handle_main_menu(List &list) {
 			    std::cout << "\n-> FIND THE PUBLISHER WITH THE FEWEST BOOKS";
 				find_publisher_with_fewest_books(list);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
@@ -144,8 +139,7 @@ void handle_main_menu(List &list) {
 			    std::cout << "\n-> STATISTICS BY PUBLICATION YEAR";
 				print_statistics_by_year(list);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}	
@@ -155,8 +149,7 @@ void handle_main_menu(List &list) {
 			    std::cout << "\n-> COUNT BOOKS BY TYPE";
 				count_books_by_type(list);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
@@ -171,8 +164,7 @@ void handle_main_menu(List &list) {
 
 				find_books_by_title(list, get_title);
 
-				new_line;
-
+				NEW_LINE;
 				waiting(choice);
 				break;
 			}
