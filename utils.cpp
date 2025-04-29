@@ -225,8 +225,7 @@ void waiting(int &choice) {
 
 std::string book_format_text(std::string text, int len) {
     if (text.length() > len) {
-        if (len > 3) return text.substr(0, len - 3) + "...";
-        else return std::string(len, '.');
+        return text.substr(0, 3) + "...";
     }
 
     while (text.length() < len) text += " ";
