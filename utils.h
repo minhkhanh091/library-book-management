@@ -15,6 +15,7 @@ void find_books_by_title(List &list, std::string type);
 void print_statistics_by_year(List &list);
 void count_books_by_type(List &list);
 
-void waiting();
+void waiting(int &choice);
+std::string book_format_text(std::string text, int len);
 
 #endif

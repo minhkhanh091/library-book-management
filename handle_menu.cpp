@@ -33,19 +33,18 @@ void handle_main_menu(List &list) {
 	int choice;
 
 	do {
-		do {
-			print_get_choice_menu_2();
-			std::cout << "Enter a choice from [0, 8] to operate: ";
-			std::cin >> choice;
+		print_get_choice_menu_2();
+		std::cout << "Enter a choice from [0, 8] to operate: ";
+		std::cin >> choice;
 
-			if (choice < 0 || choice > 9) {
-				std::cout << "Please enter a choice from [0, 9]";
-				std::cout << "\n";
-			}
-		} while (choice < 0 || choice > 9);
+		if (choice < 0 || choice > 9) {
+			std::cout << "Please enter a choice from [0, 9]";
+			std::cout << "\n";
+		}
+	} while (choice < 0 || choice > 9);
 
+	do {
 		switch (choice) {
-			// EXIT
 			case 0: break;
 
 			case 1:
@@ -66,26 +65,22 @@ void handle_main_menu(List &list) {
 			        case 2:
 			        case 3:
 			            read_from_keyboard(list, 0, sub_choice);
-			            
 			            break;
 
 			        case 4:
 			            delete_at_head(list);
-
 			            break;
+
 			        case 5:
 			            delete_at_tail(list);
-			            
 			            break;
+
 			        case 6:
 			            delete_at_middle(list);
-			            
 			            break;
 
 			        default:
 			            std::cout << "Please enter a choice from [1, 6]\n";
-
-			            break;
 			    }
 
 			    std::cout << "\nSuccessfully done!. Would you like to print the list?";
@@ -98,7 +93,7 @@ void handle_main_menu(List &list) {
 
 			    new_line;
 			    
-			    waiting();
+			    waiting(choice);
 			    break;
 			}
 
@@ -108,7 +103,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 
@@ -118,7 +113,7 @@ void handle_main_menu(List &list) {
 				
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 
@@ -129,7 +124,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 
@@ -140,7 +135,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 
@@ -151,7 +146,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}	
 
@@ -162,7 +157,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 
@@ -178,7 +173,7 @@ void handle_main_menu(List &list) {
 
 				new_line;
 
-				waiting();
+				waiting(choice);
 				break;
 			}
 		}

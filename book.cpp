@@ -142,15 +142,28 @@ void print_books(List &list) {
     Book *cur = list.head;
 
     std::cout << "\n";
+    std::cout << "+--------+---------------------------+--------------------+--------------------+--------+--------------------+\n";
+    std::cout << "| ID     | Title                     | Author             | Publisher          | Year   | Type               |\n";
+    std::cout << "+--------+---------------------------+--------------------+--------------------+--------+--------------------+\n";
 
     while (cur) {
-        std::cout << cur->book_id 
-                  << " | " << cur->title 
-                  << " | " << cur->author 
-                  << " | " << cur->publisher 
-                  << " | " << cur->publication_year 
-                  << " | " << cur->type << "\n";
-                  
+        std::string id = std::to_string(cur->book_id);
+        std::string title = cur->title;
+        std::string author = cur->author;
+        std::string publisher = cur->publisher;
+        std::string year = std::to_string(cur->publication_year);
+        std::string type = cur->type;
+
+        std::cout << "| "
+                  << book_format_text(id, 6) << " | "
+                  << book_format_text(title, 25) << " | "
+                  << book_format_text(author, 18) << " | "
+                  << book_format_text(publisher, 18) << " | "
+                  << book_format_text(year, 6) << " | "
+                  << book_format_text(type, 18) << " |\n";
+
         cur = cur->next;
     }
+
+    std::cout << "+--------+---------------------------+--------------------+--------------------+--------+--------------------+\n";
 }

@@ -215,13 +215,21 @@ void find_books_by_title(List &list, std::string type) {
     } 
 }
 
-void waiting() {
-    int choice;
-
-    std::cout << "\nEnter [1] to return to the main menu, [0] to exit!: ";
+void waiting(int &choice) {
+    std::cout << "\nThe previous request has been completed";
+    std::cout << "\nEnter a choice from [0, 8] to continue: ";
     std::cin >> choice;
 
     new_line;
+}
 
-    if (!choice) exit(0);  
+std::string book_format_text(std::string text, int len) {
+    if (text.length() > len) {
+        if (len > 3) return text.substr(0, len - 3) + "...";
+        else return std::string(len, '.');
+    }
+
+    while (text.length() < len) text += " ";
+    
+    return text;
 }
