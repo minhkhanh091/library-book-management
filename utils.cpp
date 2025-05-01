@@ -1,5 +1,4 @@
-﻿#include <cstdlib>
-#include <iostream>
+﻿#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
@@ -217,7 +216,7 @@ void find_books_by_title(List &list, std::string type) {
 
 void waiting(int &choice) {
     std::cout << "\nThe previous request has been completed";
-    std::cout << "\nEnter a choice from [0, 8] to continue: ";
+    std::cout << "\nEnter a choice from [0, 9] to continue: ";
     std::cin >> choice;
 
     NEW_LINE;

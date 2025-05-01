@@ -63,7 +63,11 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
         std::string title, author, publisher, type;
 
         std::cout << "Enter book ID: ";
-        std::cin >> book_id;
+        while (!(std::cin >> book_id)) {
+            std::cout << "Invalid input. Please enter an integer: ";
+            std::cin.clear();
+            std::cin.ignore(99999, '\n');
+        }
         std::cin.ignore();
 
         std::cout << "Enter book title: ";
@@ -76,7 +80,11 @@ void read_from_keyboard(List &list, int need_maintain_order, int insert_pos) {
         std::getline(std::cin, publisher);
 
         std::cout << "Enter publication year: ";
-        std::cin >> publication_year;
+        while (!(std::cin >> publication_year)) {
+            std::cout << "Invalid input. Please enter an integer: ";
+            std::cin.clear();
+            std::cin.ignore(99999, '\n');
+        }       
         std::cin.ignore();
 
         std::cout << "Enter type: ";

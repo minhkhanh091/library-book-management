@@ -25,6 +25,7 @@ void print_get_choice_menu_2() {
     std::cout << "6. Statistics by publication year\n";
     std::cout << "7. Count books by type\n";
     std::cout << "8. Find books by type\n";
+	std::cout << "9. Print books\n";
     std::cout << "0. Exit\n";
     std::cout << "===================================\n";	
 }
@@ -34,7 +35,7 @@ void handle_main_menu(List &list) {
 
 	do {
 		print_get_choice_menu_2();
-		std::cout << "Enter a choice from [0, 8] to operate: ";
+		std::cout << "Enter a choice from [0, 9] to operate: ";
 		std::cin >> choice;
 
 		if (choice < 0 || choice > 9) {
@@ -165,6 +166,13 @@ void handle_main_menu(List &list) {
 				find_books_by_title(list, get_title);
 
 				NEW_LINE;
+				waiting(choice);
+				break;
+			}
+
+			case 9:
+			{
+				print_books(list);
 				waiting(choice);
 				break;
 			}
